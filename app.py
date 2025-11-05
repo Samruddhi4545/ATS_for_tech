@@ -194,7 +194,7 @@ def process_all_candidates(df, problem_statement):
 
 # --- STREAMLIT APP LAYOUT ---
     
-st.set_page_config(page_title="Triage Skill Matcher", layout="wide")
+st.set_page_config(page_title="ATS for tech", layout="wide")
 st.header("ATS for Technicians")
 
 st.info("Upload your employee skills database (Excel) and describe the problem to find the most suitable, available technician.")
@@ -213,7 +213,7 @@ with col_file:
     
 with col_problem:
     problem_statement = st.text_area(
-        "Problem Statement (AC is broken): ",
+        "Problem Statement: ",
         key='input',
         height=150,
         placeholder="E.g., The AC unit is blowing warm air and the condenser fan is not spinning. We suspect a bad capacitor or fan motor failure.",
@@ -222,7 +222,7 @@ with col_problem:
 
 # --- EXECUTION BUTTON ---
 submit_ranked_list = custom_button(
-    label="FIND AVAILABLE TECHNICIANS (Rank by Skill Match)",
+    label="FIND AVAILABLE TECHNICIANS",
     key="ranked_list_btn",
     color="#008000",
     hover_color="#006400"
@@ -243,7 +243,7 @@ if submit_ranked_list:
         df_ranked = process_all_candidates(df_full, problem_statement)
         
         if df_ranked.empty:
-            st.warning("No employees were matched and available for triage. Check your Excel column names, or ensure at least one employee is marked 'Available'.")
+            st.warning("No employees were matched and available. Check your Excel column names, or ensure at least one employee is marked 'Available'.")
         else:
             st.success(f"Found {len(df_ranked)} available employees matched to the problem.")
             st.subheader("Recommended Technical Team (Highest Match First)")
