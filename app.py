@@ -263,7 +263,7 @@ if submit_ranked_list:
             )
             
             st.markdown(f"""<div style='background-color:#f0f2f6; padding:10px; border-radius:8px; margin-top:15px;'>
-                         The recommended team members are all confirmed to be **'Available'**.</div>""", unsafe_allow_html=True)
+                        The recommended team members are all confirmed to be Available.</div>""", unsafe_allow_html=True)
             
     else:
         st.warning("Please upload the Employee Database Excel file and provide a Problem Statement.")
