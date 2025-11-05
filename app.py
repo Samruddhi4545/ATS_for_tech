@@ -262,7 +262,7 @@ if submit_ranked_list:
                 height=min(500, (len(df_ranked) + 1) * 35 + 3),
             )
             
-            st.markdown(f"""<div style='background-color:#f0f2f6; padding:10px; border-radius:8px; margin-top:15px;'>**Triage Summary:** The list is ranked by **Skill Match** (NLP/Hybrid Score) followed by **Expertise Level**.
+            st.markdown(f"""<div style='background-color:#f0f2f6; padding:10px; border-radius:8px; margin-top:15px;'>
                          The recommended team members are all confirmed to be **'Available'**.</div>""", unsafe_allow_html=True)
             
     else:
