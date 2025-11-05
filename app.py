@@ -195,7 +195,7 @@ def process_all_candidates(df, problem_statement):
 # --- STREAMLIT APP LAYOUT ---
     
 st.set_page_config(page_title="Triage Skill Matcher", layout="wide")
-st.header("🛠️ Internal Skill-Matching & Triage System (HVAC Focus)")
+st.header("ATS for Technicians")
 
 st.info("Upload your employee skills database (Excel) and describe the problem to find the most suitable, available technician.")
 
