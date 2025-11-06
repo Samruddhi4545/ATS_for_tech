@@ -267,3 +267,5 @@ if submit_ranked_list:
             
     else:
         st.warning("Please upload the Employee Database Excel file and provide a Problem Statement.")
+#eg prbm stmt :The server room AC unit is constantly freezing up and now the external condenser fan is making a loud grinding noise. The pressure readings are
+#inconsistent, suggesting a possible refrigerant leak or major fan motor failure. We need immediate diagnosis and repair.
