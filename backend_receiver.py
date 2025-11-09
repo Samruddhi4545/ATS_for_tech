@@ -6,7 +6,7 @@ import json
 import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware#type:ignore
 
-# Define the data structure the sensor/mobile will send
+# Define the data structure the sensor will send
 class SensorSignal(BaseModel):
     deviceID: str
     problemStatement: str
@@ -18,7 +18,7 @@ DATA_FILE = "signal.json"
 app = FastAPI()
 
 origins = [
-    "*", 
+    "*",
 ]
 
 app.add_middleware(
@@ -44,7 +44,7 @@ async def receive_signal(signal: SensorSignal):
         with open(DATA_FILE, 'w') as f:
             json.dump(data_to_save, f)
             
-        print(f"Signal received for Device {signal.deviceID}: {signal.problemStatement[:30]}...")
+        print(f"Signal received from Device {signal.deviceID}: {signal.problemStatement[:30]}...")
         
         # 2. (Optional: Run the matching logic directly here if you decouple the UI)
         # For now, we'll let Streamlit handle the matching logic.
@@ -54,7 +54,7 @@ async def receive_signal(signal: SensorSignal):
         return {"status": "error", "message": str(e)}
 
 if __name__ == "__main__":
-    # Run the server (typically on a port like 8000)
-    # You'll need to install: pip install fastapi uvicorn
+    # Run the server (on port 8001 or other)
+    # need to install: pip install fastapi uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8001)
 #HVAC-COND-R4,Critical failure detected: Refrigerant pressure drop and fan motor is vibrating severely. Requires low voltage control diagnostics.
