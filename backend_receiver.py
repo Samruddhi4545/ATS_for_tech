@@ -4,7 +4,7 @@ from pydantic import BaseModel
 import uvicorn#type:ignore
 import json
 import pandas as pd
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware#type:ignore
 
 # Define the data structure the sensor/mobile will send
 class SensorSignal(BaseModel):
