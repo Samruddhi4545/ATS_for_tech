@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sensor Simulator</title>
+    <style>body {font-family: Arial; padding: 20px;} input, textarea, button {width: 100%; padding: 10px; margin: 5px 0; box-sizing: border-box;}</style>
+</head>
+<body>
+    <h2>Mobile Sensor Signal Sender</h2>
+    <p>Use your mobile browser to access this file and send a test signal to the backend API.</p>
+    <label for="deviceID">Device ID:</label>
+    <input type="text" id="deviceID" value="A-456-HVAC-2" required>
+    <label for="problemStatement">Problem Statement (Sensor Output):</label>
+    <textarea id="problemStatement" rows="5" placeholder="e.g., Error: Refrigerant pressure drop detected, fan motor speed unstable." required></textarea>
+    <button type="submit" onclick="sendSignal()">SEND FAULT SIGNAL</button>
+    <p id="statusMessage"></p>
+
+    <script>
+        // NOTE: Replace 'localhost:8000' with your server's public IP/URL if running remotely!
+        const API_ENDPOINT = 'http://localhost:8001/api/sensor/signal';
+
+        async function sendSignal() {
+            const deviceID = document.getElementById('deviceID').value;
+            const problemStatement = document.getElementById('problemStatement').value;
+            const statusMessage = document.getElementById('statusMessage');
+
+            if (!deviceID || !problemStatement) {
+                statusMessage.textContent = "Please fill in all fields.";
+                statusMessage.style.color = 'red';
+                return;
+            }
+
+            statusMessage.textContent = "Sending signal...";
+            statusMessage.style.color = 'blue';
+
+            try {
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ deviceID, problemStatement })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    statusMessage.textContent = " Signal sent successfully! Check Streamlit App.";
+                    statusMessage.style.color = 'green';
+                } else {
+                    statusMessage.textContent = ` API Error: ${result.message || response.statusText}`;
+                    statusMessage.style.color = 'red';
+                }
+            } catch (error) {
+                statusMessage.textContent = ` Network Error: Could not reach the API. (${error.message})`;
+                statusMessage.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
