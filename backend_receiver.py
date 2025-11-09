@@ -18,15 +18,15 @@ DATA_FILE = "signal.json"
 app = FastAPI()
 
 origins = [
-    "*",  # Allows all origins (including local files and remote hosts)
+    "*", 
 ]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"], # Must allow all methods (including OPTIONS, POST)
-    allow_headers=["*"], # Must allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.post("/api/sensor/signal")
