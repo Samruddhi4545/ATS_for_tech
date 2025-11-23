@@ -1,1 +1,1 @@
-{"deviceID": "HVAC-JS-RCA-4", "problemStatement": "Critical compressor failure detected. Immediate need for an expert in troubleshooting and leak detection using a pressure gauge. The system indicates a fault in the capacitors and contactors which requires root cause analysis and replacement.", "timestamp": "2025-11-11T12:15:42.582241"}
+{"deviceID": "HVAC-COND-R4", "problemStatement": "Critical failure detected: Refrigerant pressure drop and fan motor is vibrating severely. Requires low voltage control diagnostics.", "timestamp": "2025-11-22T14:02:12.698440"}
